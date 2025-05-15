@@ -7,21 +7,29 @@ from datetime import datetime
 links = [
     {
         "mannschaftsname": "3. Mannschaft",
+        "arrayname": "dritteMannschaft",
         "link": "https://www.fupa.net/team/sg-scharmedethuele-m3-2024-25/matches"
     },
     {
         "mannschaftsname": "2. Mannschaft",
+        "arrayname": "zweiteMannschaft",
         "link": "https://www.fupa.net/team/sg-scharmedethuele-m2-2024-25/matches"
     }
 ]
 
 
-def lade_spiele_von_fupa(url):
+def lade_spiele_von_fupa(url):        
+    #mannschaft =
+    class Object(object):
+        pass
+    spiele = Object()
     for mannschaft in url:
         print(mannschaft.mannschaftsname)
         headers = {
             "User-Agent": "Mozilla/5.0"
         }
+
+        #setattr(spiele, mannschaft.mannschaf)
 
         response = requests.get(url, headers=headers)
         if response.status_code != 200:
@@ -30,8 +38,6 @@ def lade_spiele_von_fupa(url):
 
         soup = BeautifulSoup(response.text, "html.parser")
 
-        #mannschaft = 
-        spiele = []
 
         # Jeder Spiel-Container
         for match in soup.select("div.sc-1cfloyl-0"):
@@ -59,7 +65,7 @@ def lade_spiele_von_fupa(url):
                     if team_name != "SG Scharmede/Thüle III":
                         gegner = team_name
                         if(counter == 1): 
-                            ort = "Auswärtsspiel0"
+                            ort = "Auswärtsspiel"
                         else:
                             ort = "Heimspiel"
                 print(teams)
