@@ -1,0 +1,28 @@
+{
+  "dritteMannschaft":[
+    {
+      "datum": "2025-05-22T00:00:00",
+      "zeit": "19:15",
+      "gegner": "SG Oberes Almetal 23 III",
+      "ort": "Heimspiel"
+    },
+    {
+      "datum": "2025-05-25T00:00:00",
+      "zeit": "12:00",
+      "gegner": "SG Haaren/Helmern II",
+      "ort": "Auswärtsspiel"
+    },
+    {
+      "datum": "2025-06-01T00:00:00",
+      "zeit": "12:30",
+      "gegner": "BSV Fürstenberg",
+      "ort": "Auswärtsspiel"
+    },
+    {
+      "datum": "2025-06-06T00:00:00",
+      "zeit": "19:30",
+      "gegner": "FC Dahl/Dörenhagen III",
+      "ort": "Heimspiel"
+    }
+]
+}
