@@ -1,61 +1,19 @@
 {
   "dritteMannschaft": [
     {
-      "datum": "2025-05-22T19:15:00",
-      "zeit": "19:15",
       "gegner": "SG Oberes Almetal 23 III",
       "ort": "Heimspiel"
     },
     {
-      "datum": "2025-05-25T12:00:00",
-      "zeit": "12:00",
-      "gegner": "SG Scharmede/Thüle III",
-      "ort": "Heimspiel"
-    },
-    {
-      "datum": "2025-06-01T12:30:00",
-      "zeit": "12:30",
-      "gegner": "SG Scharmede/Thüle III",
-      "ort": "Heimspiel"
-    },
-    {
-      "datum": "2025-06-06T19:30:00",
-      "zeit": "19:30",
-      "gegner": "FC Dahl/Dörenhagen III",
-      "ort": "Heimspiel"
-    }
-  ],
-  "zweiteMannschaft": [
-    {
-      "datum": "2025-05-18T15:00:00",
-      "zeit": "15:00",
-      "gegner": "TuRa Elsen",
+      "gegner": "SG Haaren/Helmern II",
       "ort": "Auswärtsspiel"
     },
     {
-      "datum": "2025-05-25T12:30:00",
-      "zeit": "12:30",
-      "gegner": "Hövelhofer SV II",
-      "ort": "Heimspiel"
-    }
-  ],
-  "ersteMannschaft": [
-    {
-      "datum": "2025-05-18T15:00:00",
-      "zeit": "15:00",
-      "gegner": "SF DJK Mastbruch II",
-      "ort": "Heimspiel"
+      "gegner": "BSV 1921 Fürstenberg",
+      "ort": "Auswärtsspiel"
     },
     {
-      "datum": "2025-05-22T19:30:00",
-      "zeit": "19:30",
-      "gegner": "SCV Neuenbeken",
-      "ort": "Heimspiel"
-    },
-    {
-      "datum": "2025-06-01T15:00:00",
-      "zeit": "15:00",
-      "gegner": "SG Scharmede/Thüle",
+      "gegner": "FC Dahl/Dörenhagen III",
       "ort": "Heimspiel"
     }
   ]
