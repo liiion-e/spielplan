@@ -6,32 +6,41 @@ from datetime import datetime
 # URL zum Spielplan deiner Mannschaft (Reiter „Spiele“!)
 links = [
     {
+        "teamname": "SG Scharmede/Thüle II",
         "mannschaftsname": "3. Mannschaft",
         "arrayname": "dritteMannschaft",
         "link": "https://www.fupa.net/team/sg-scharmedethuele-m3-2024-25/matches"
     },
     {
+        "teamname": "SG Scharmede/Thüle II",
         "mannschaftsname": "2. Mannschaft",
         "arrayname": "zweiteMannschaft",
         "link": "https://www.fupa.net/team/sg-scharmedethuele-m2-2024-25/matches"
+    },
+    {
+        "teamname": "SG Scharmede/Thüle I",
+        "mannschaftsname": "1. Mannschaft",
+        "arrayname": "ersteMannschaft",
+        "link": "https://www.fupa.net/team/sg-scharmedethuele-m1-2024-25/matches"
     }
 ]
 
+print(links)
 
 def lade_spiele_von_fupa(url):        
-    #mannschaft =
-    class Object(object):
-        pass
-    spiele = Object()
+    spiele = {}
     for mannschaft in url:
-        print(mannschaft.mannschaftsname)
+        spieleTeam = []
+        print(mannschaft["mannschaftsname"])
         headers = {
             "User-Agent": "Mozilla/5.0"
         }
 
+        link = mannschaft["link"]
+
         #setattr(spiele, mannschaft.mannschaf)
 
-        response = requests.get(url, headers=headers)
+        response = requests.get(link, headers=headers)
         if response.status_code != 200:
             print(f"Fehler beim Laden der Seite: {response.status_code}")
             return []
@@ -47,10 +56,14 @@ def lade_spiele_von_fupa(url):
                 date_str = match.select_one("span.sc-lhxcmh-0").get_text(strip=True)
                 time_str = match.select_one("span.sc-4yququ-1").get_text(strip=True)
                 # Format z.B.: "So., 26.05.2024 15:00"
-                date_clean = date_str.replace("So., ", "").replace("Sa., ", "").replace("Fr., ", "").replace("Do., ", "").replace("Mi., ", "").replace("Di., ", "").replace("Mo., ", "")
-                dateTime = date_clean #+ " " + time_str
-                datum = datetime.strptime(dateTime, "%d.%m.%Y")
+                date_clean = date_str
+                for tag in ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]:
+                    date_clean = date_clean.replace(f"{tag}., ", "")
+                if date_clean == "Heute":
+                    date_clean = datetime.today().strftime("%d.%m.%Y")
+                dateTime = date_clean + " " + time_str
                 print(dateTime)
+                datum = datetime.strptime(dateTime, "%d.%m.%Y %H:%M")
 
                 # Gegner
                 teams = []
@@ -62,7 +75,7 @@ def lade_spiele_von_fupa(url):
                     if len(team) > 2:
                         team_name += " " + team[2].get_text(strip=True)
                     teams.append(team_name)
-                    if team_name != "SG Scharmede/Thüle III":
+                    if team_name != mannschaft["teamname"]:
                         gegner = team_name
                         if(counter == 1): 
                             ort = "Auswärtsspiel"
@@ -73,7 +86,7 @@ def lade_spiele_von_fupa(url):
                 #ort_div = match.select_one("div.MatchRow_location__wJkQD")
                 #ort = ort_div.get_text(strip=True) if ort_div else "Ort unbekannt"
 
-                spiele.append({
+                spieleTeam.append({
                     "datum": datum.isoformat(),
                     "zeit": time_str,
                     "gegner": gegner,
@@ -83,6 +96,8 @@ def lade_spiele_von_fupa(url):
             except Exception as e:
                 print("Fehler beim Parsen eines Spiels:", e)
                 continue
+
+        spiele[mannschaft["arrayname"]] = spieleTeam
 
     return spiele
 
