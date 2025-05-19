@@ -81,10 +81,12 @@ def lade_spieleSeiten_von_fussball_de(teamArray):
                             gegner = matchTeam
                         print(matchTeam)
 
-                    matchLocation = matchSite.select_one("a.location").get_text(strip=True)
+                    matchLocationWrapper = matchSite.select_one("a.location").get_text(strip=True).split(",")
                     #Google Maps Link:
                     #matchLocation = matchSite.select_one("a.location").get("href",[])
-                    ort = matchLocation or "Ort unbekannt"
+                    #print(matchLocationWrapper)
+                    matchLocation = matchLocationWrapper[2] + "," + matchLocationWrapper[3]
+                    ort = matchLocation[1:] or "Ort unbekannt"
                     print(ort)
 
                     spieleMannschaft.append({
