@@ -88,12 +88,14 @@ def lade_spieleSeiten_von_fussball_de(teamArray):
                     matchLocation = matchLocationWrapper[2] + "," + matchLocationWrapper[3]
                     ort = matchLocation[1:] or "Ort unbekannt"
                     print(ort)
+                    platzart = matchLocationWrapper[0]
 
                     spieleMannschaft.append({
                         "datum": datum.isoformat(),
                         "zeit": time,
                         "gegner": gegner,
-                        "ort": ort
+                        "ort": ort,
+                        "platzart": platzart
                     })
 
                 except Exception as e:
